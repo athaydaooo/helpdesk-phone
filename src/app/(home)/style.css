@@ -1,0 +1,4 @@
+.bg-blue-white {
+  background: linear-gradient(-190deg, #02579c 50%, white 50%);
+  height: 100vh; /* Exemplo de altura total da tela */
+}
