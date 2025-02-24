@@ -1,6 +1,6 @@
-repositoryName: base-repository
-repositoryOwner: athaydaooo
-imageTag: e13cf8d9be07d089b32d3c0efb87de226fe6d167
+repositoryName: helpdesk-phone
+repositoryOwner: commexcom
+imageTag: latest
 replicaCount: 2
 service:
   enabled: true
@@ -17,11 +17,11 @@ ingress:
       nginx.ingress.kubernetes.io/rewrite-target: /,
     }
   hosts:
-    - host: teste.guaruja.sp.gov.br
+    - host: stage-telefone.guaruja.sp.gov.br
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - teste.guaruja.sp.gov.br
+        - stage-telefone.guaruja.sp.gov.br
       secretName: guarujaspgovbr-tls
