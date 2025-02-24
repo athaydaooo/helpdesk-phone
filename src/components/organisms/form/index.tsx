@@ -9,22 +9,45 @@ import { DualInputNumberField } from "@/components/molecules/dual-input-number-f
 import { FormHeader } from "@/components/molecules/form-header";
 import * as React from "react";
 
+export interface FormContent {
+  name: string;
+  phone: string;
+  ramal: number;
+  internalRamal: number;
+  description: string;
+}
+
 export const Form: React.FC = () => {
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [ramal, setRamal] = React.useState("");
-  const [setor, setSetor] = React.useState("");
+  const [internalRamal, setInternalRamal] = React.useState("");
   const [description, setDescription] = React.useState("");
 
+  const [loading, setLoading] = React.useState(false);
+  const [response, setResponse] = React.useState("");
+
   const handleSubmit = async () => {
-    try {
-      // Handle form submission
-      const formData = { name, phone, ramal, setor, description };
-      console.log(formData);
-      // Add API call here
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
+    setLoading(true);
+    setResponse("");
+
+    const formData: FormContent = {
+      name,
+      phone,
+      ramal: parseInt(ramal),
+      internalRamal: parseInt(internalRamal),
+      description,
+    };
+
+    const res = await fetch("/api/submit/phone-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await res.json();
+    setResponse(result.message);
+    setLoading(false);
   };
 
   return (
@@ -52,9 +75,9 @@ export const Form: React.FC = () => {
           <div className="mt-4">
             <DualInputNumberField
               ramalValue={ramal}
-              internalRamalValue={setor}
+              internalRamalValue={internalRamal}
               onRamalChange={setRamal}
-              onInternalRamalChange={setSetor}
+              onInternalRamalChange={setInternalRamal}
               maxLength={9999}
             />
           </div>
@@ -79,6 +102,8 @@ export const Form: React.FC = () => {
           alt="Logo da prefeitura do Guarujá"
         />
       </div>
+      {loading && <p>Enviando...</p>}
+      {response && <p>{response}</p>}
     </div>
   );
 };
