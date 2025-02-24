@@ -23,7 +23,13 @@ export const ImageWrapper: React.FC<ImageWrapperProps> = ({
         "self-center"
       )}
     >
-      <Image src={imageUrl} layout="fill" objectFit="contain" alt={alt} />
+      <Image
+        src={imageUrl}
+        layout="fill"
+        sizes="auto"
+        objectFit="contain"
+        alt={alt}
+      />
     </div>
   );
 };

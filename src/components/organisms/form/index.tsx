@@ -9,12 +9,22 @@ import { DualInputNumberField } from "@/components/molecules/dual-input-number-f
 import { FormHeader } from "@/components/molecules/form-header";
 import * as React from "react";
 
+import "./style.css";
+
 export interface FormContent {
   name: string;
   phone: string;
   ramal: number;
   internalRamal: number;
   description: string;
+}
+
+export enum FieldNames {
+  name = "name",
+  phone = "phone",
+  ramal = "ramal",
+  internalRamal = "internalRamal",
+  description = "description",
 }
 
 export const Form: React.FC = () => {
@@ -24,9 +34,47 @@ export const Form: React.FC = () => {
   const [internalRamal, setInternalRamal] = React.useState("");
   const [description, setDescription] = React.useState("");
 
-  const [loading, setLoading] = React.useState(false);
+  const [invalidFields, setInvalidFields] = React.useState<FieldNames[]>([]);
+  const [disableSubmitButton, setDisableSubmitButton] =
+    React.useState<boolean>(false);
+
+  const validateForm = (): boolean => {
+    const nameRegex = /^[A-Za-z\s]+$/;
+    const phoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+    const ramalRegex = /^\d{4}$/;
+
+    const newInvalidFields: FieldNames[] = [];
+
+    if (!name || !nameRegex.test(name)) newInvalidFields.push(FieldNames.name);
+
+    if (!phone || !phoneRegex.test(phone))
+      newInvalidFields.push(FieldNames.phone);
+
+    if (!ramal || !ramalRegex.test(ramal))
+      newInvalidFields.push(FieldNames.ramal);
+
+    if (!internalRamal || !ramalRegex.test(internalRamal))
+      newInvalidFields.push(FieldNames.internalRamal);
+
+    if (!description) newInvalidFields.push(FieldNames.description);
+
+    setInvalidFields(newInvalidFields);
+
+    return newInvalidFields.length === 0;
+  };
+
   const handleSubmit = async () => {
-    setLoading(true);
+    if (!(await validateForm())) {
+      const formButton = document.getElementById("formButton");
+
+      if (formButton) {
+        formButton.classList.remove("shake"); // Remove a classe
+        void formButton.offsetWidth; // Força um reflow para reiniciar a animação
+        formButton.classList.add("shake"); // Adiciona novamente para rodar a animação
+      }
+
+      return;
+    }
 
     const formData: FormContent = {
       name,
@@ -43,7 +91,10 @@ export const Form: React.FC = () => {
     });
 
     await res.json();
-    setLoading(false);
+
+    document.getElementById("btnText")!.innerHTML = "ENVIADO";
+    document.getElementById("btn")!.classList.add("active");
+    setDisableSubmitButton(true);
   };
 
   return (
@@ -57,23 +108,42 @@ export const Form: React.FC = () => {
 
         <FormHeader />
 
-        <section className="p-4 mt-5 w-full text-[#807B7C] rounded-2xl">
+        <section className="p-4 mt-5 w-full text-[#807B7C] rounded-xl">
           <InputField
             placeholder="Digite seu primeiro nome"
             value={name}
             onChange={setName}
+            className={
+              invalidFields.includes(FieldNames.name)
+                ? "invalid-field"
+                : "btnnn"
+            }
           />
 
           <div className="mt-4">
-            <PhoneField value={phone} onChange={setPhone} />
+            <PhoneField
+              className={
+                invalidFields.includes(FieldNames.phone) ? "invalid-field" : ""
+              }
+              value={phone}
+              onChange={setPhone}
+            />
           </div>
 
           <div className="mt-4">
             <DualInputNumberField
               ramalValue={ramal}
               internalRamalValue={internalRamal}
+              ramalClassName={
+                invalidFields.includes(FieldNames.ramal) ? "invalid-field" : ""
+              }
               onRamalChange={setRamal}
               onInternalRamalChange={setInternalRamal}
+              internalRamalClassName={
+                invalidFields.includes(FieldNames.internalRamal)
+                  ? "invalid-field"
+                  : ""
+              }
               maxLength={9999}
             />
           </div>
@@ -83,12 +153,20 @@ export const Form: React.FC = () => {
               value={description}
               onChange={setDescription}
               placeholder="Oque você precisa?"
+              className={
+                invalidFields.includes(FieldNames.description)
+                  ? "invalid-field"
+                  : ""
+              }
             />
           </div>
         </section>
 
-        <div className="flex justify-center mt-5">
-          <SubmitButton isLoading={loading} onClick={handleSubmit} />
+        <div id="formButton" className="flex justify-center mt-5">
+          <SubmitButton
+            isDisabled={disableSubmitButton}
+            onClick={handleSubmit}
+          />
         </div>
       </div>
       <div className="hidden md:flex md:flex-col">
