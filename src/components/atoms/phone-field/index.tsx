@@ -39,7 +39,7 @@ export const PhoneField: React.FC<PhoneFieldProps> = ({ value, onChange }) => {
         />
       </div>
       <ImageWrapper
-        imageUrl="/whatsapp-gray.png"
+        imageUrl="/WPP-GRAY.png"
         alt="Logo whatsapp cinza"
         className="w-[1.5em]"
       />
