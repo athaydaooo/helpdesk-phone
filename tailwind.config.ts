@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "blue-guaruja": "#02579C",
+        placeholder: "#807B7C",
       },
       screens: {
         xs: { max: "325px" }, // Dispositivos menores que 325px
