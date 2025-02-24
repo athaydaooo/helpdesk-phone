@@ -25,11 +25,8 @@ export const Form: React.FC = () => {
   const [description, setDescription] = React.useState("");
 
   const [loading, setLoading] = React.useState(false);
-  const [response, setResponse] = React.useState("");
-
   const handleSubmit = async () => {
     setLoading(true);
-    setResponse("");
 
     const formData: FormContent = {
       name,
@@ -45,8 +42,7 @@ export const Form: React.FC = () => {
       body: JSON.stringify(formData),
     });
 
-    const result = await res.json();
-    setResponse(result.message);
+    await res.json();
     setLoading(false);
   };
 
@@ -92,7 +88,7 @@ export const Form: React.FC = () => {
         </section>
 
         <div className="flex justify-center mt-5">
-          <SubmitButton onClick={handleSubmit} />
+          <SubmitButton isLoading={loading} onClick={handleSubmit} />
         </div>
       </div>
       <div className="hidden md:flex md:flex-col">
@@ -102,8 +98,6 @@ export const Form: React.FC = () => {
           alt="Logo da prefeitura do Guarujá"
         />
       </div>
-      {loading && <p>Enviando...</p>}
-      {response && <p>{response}</p>}
     </div>
   );
 };

@@ -9,11 +9,11 @@ class AppResponse {
   static createResponse(options: AppResponseOptions) {
     return new Response(
       JSON.stringify({
-        status: "success",
+        status: options.status === 200 ? true : false,
         message: options.message,
       }),
       {
-        status: 200,
+        status: options.status,
         headers: {
           "Content-Type": "application/json",
         },
@@ -24,7 +24,7 @@ class AppResponse {
   static createErrorResponse(error: AppError | unknown) {
     return new Response(
       JSON.stringify({
-        status: "error",
+        status: false,
         message:
           error instanceof AppError ? error.message : "Internal Server Error",
       }),
