@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${popins.variable} antialiased bg-white`}>
+      <body className={`!${popins.variable} antialiased bg-white`}>
         {children}
       </body>
     </html>
