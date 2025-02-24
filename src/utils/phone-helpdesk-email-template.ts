@@ -7,21 +7,21 @@ export function getEmailTemplate(formContent: FormContent): EmailTemplate {
   const emailTemplate = {
     subject: `Atendimento - Ramal: ${formContent.ramal} Ramal Interno: ${formContent.internalRamal}`,
     text: `
-                Olá,
+Olá,
 
-                Você recebeu uma nova solicitação de atendimento.
+Você recebeu uma nova solicitação de atendimento.
 
-                Detalhes do formulário:
-                - Nome: ${formContent.name}
-                - Telefone: ${formContent.phone}
-                - Link direto WhatsApp: https://wa.me/55${phoneNumber}
-                - Ramal: ${formContent.ramal}
-                - Ramal Interno: ${formContent.internalRamal}
-                - Mensagem: ${formContent.description}
+Detalhes do formulário:
+- Nome: ${formContent.name}
+- Telefone: ${formContent.phone}
+- Link direto WhatsApp: https://wa.me/55${phoneNumber}
+- Ramal: ${formContent.ramal}
+- Ramal Interno: ${formContent.internalRamal}
+- Mensagem: ${formContent.description}
 
-                Atenciosamente,
-                Helpdesk Automatico
-            `,
+Atenciosamente,
+Helpdesk Automatico
+`,
   };
 
   return emailTemplate;
