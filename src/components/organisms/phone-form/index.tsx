@@ -130,6 +130,7 @@ export const PhoneForm: React.FC = () => {
           className="block md:hidden w-[50%] mb-6"
           imageUrl="/PMG-V-BLUE.png"
           alt="Logo da prefeitura do Guarujá"
+          priority
         />
 
         <FormHeader />
@@ -208,6 +209,7 @@ export const PhoneForm: React.FC = () => {
           className="w-[80%]"
           imageUrl="/PMG-V-BLUE.png"
           alt="Logo da prefeitura do Guarujá"
+          priority
         />
       </div>
     </div>

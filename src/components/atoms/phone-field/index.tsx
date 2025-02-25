@@ -41,7 +41,7 @@ export const PhoneField: React.FC<PhoneFieldProps> = ({
     <div
       className={clsx(
         className,
-        "flex justify-between p-2.5 text-center rounded-2xl bg-slate-100 shadow-[0px_4px_7px_rgba(0,0,0,0.25)] w-full"
+        "flex justify-between p-2.5 text-center rounded-2xl bg-slate-100 w-full"
       )}
     >
       <div className="flex gap-1.5 items-center h-full ">

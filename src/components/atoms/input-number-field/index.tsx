@@ -34,7 +34,7 @@ export const InputNumberField: React.FC<InputNumberFieldProps> = ({
       onBlur={() => validateField(name)}
       className={clsx(
         className,
-        "overflow-hidden p-2.5 w-full text-xs md:text-base text-left rounded-xl bg-slate-100 shadow-[0px_4px_7px_rgba(0,0,0,0.25)]"
+        "overflow-hidden p-2.5 w-full text-xs md:text-base text-left rounded-xl bg-slate-100"
       )}
       min={min}
       max={max}

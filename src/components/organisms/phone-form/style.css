@@ -1,7 +1,12 @@
 .invalid-field {
-  border: 1px solid rgba(255, 0, 0, 0.295);
+  border: 1px sol rgba(255, 0, 0, 0.295);
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.295);
   transition: 0.5s;
+}
+
+.valid-field {
+  box-shadow: 0 4 7px rgba(0, 0, 0, 0.25);
+  transition: 0.1s;
 }
 
 .shake {
