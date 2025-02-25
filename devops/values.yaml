@@ -10,13 +10,18 @@ service:
 ingress:
   enabled: true
   className: "nginx"
-  annotations: {nginx.ingress.kubernetes.io/ssl-redirect: "true", nginx.ingress.kubernetes.io/force-ssl-redirect: "true", nginx.ingress.kubernetes.io/rewrite-target: /}
+  annotations:
+    {
+      nginx.ingress.kubernetes.io/ssl-redirect: "true",
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true",
+      nginx.ingress.kubernetes.io/rewrite-target: /,
+    }
   hosts:
-    - host: stage-telefone.guaruja.sp.gov.br
+    - host: telefone.guaruja.sp.gov.br
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - stage-telefone.guaruja.sp.gov.br
+        - telefone.guaruja.sp.gov.br
       secretName: guarujaspgovbr-tls

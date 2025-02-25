@@ -1,7 +1,7 @@
-import { FormContent } from "@/components/organisms/form";
 import { EmailTemplate } from "@/types/domain/email-template";
+import { PhoneFormData } from "@/types/domain/phone-form";
 
-export function getEmailTemplate(formContent: FormContent): EmailTemplate {
+export function getEmailTemplate(formContent: PhoneFormData): EmailTemplate {
   const phoneNumber = formContent.phone.replace(/\D/g, "");
 
   const emailTemplate = {
