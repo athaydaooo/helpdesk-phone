@@ -167,6 +167,8 @@ export const PhoneForm: React.FC = () => {
                   "flex-1",
                   getInvalidFieldClass(invalidFields, FieldNames.ramal)
                 )}
+                hoverImageUrl="/RAMAL-TOOLTIP.png"
+                max={4}
               />
               <InputNumberField
                 name={FieldNames.internalRamal}
@@ -178,6 +180,8 @@ export const PhoneForm: React.FC = () => {
                   "flex-1",
                   getInvalidFieldClass(invalidFields, FieldNames.internalRamal)
                 )}
+                hoverImageUrl="/INTERNAL-RAMAL-TOOLTIP.png"
+                max={4}
               />
             </div>
           </div>

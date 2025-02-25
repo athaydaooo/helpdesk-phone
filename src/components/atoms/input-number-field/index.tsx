@@ -4,6 +4,7 @@ import { FieldNames } from "@/components/organisms/phone-form";
 import { clsx } from "clsx";
 import * as React from "react";
 import { ImageWrapper } from "../image-wrapper";
+import Tooltip from "../tooltip";
 
 interface InputNumberFieldProps {
   name: FieldNames;
@@ -14,7 +15,7 @@ interface InputNumberFieldProps {
   className?: string;
   max?: number;
   min?: number;
-  onInfoHover?: () => void;
+  hoverImageUrl?: string;
 }
 
 export const InputNumberField: React.FC<InputNumberFieldProps> = ({
@@ -26,25 +27,38 @@ export const InputNumberField: React.FC<InputNumberFieldProps> = ({
   className = "",
   max = 10,
   min = 0,
+  hoverImageUrl,
 }) => {
   return (
     <div
       className={clsx(
         className,
-        "flex flex-row overflow-hidden p-2.5 w-full text-xs md:text-base text-left rounded-xl bg-slate-100"
+        "flex flex-row p-2.5 w-full text-xs md:text-base text-left rounded-xl bg-slate-100"
       )}
     >
       <input
         type="number"
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          if (e.target.value.length <= max) {
+            onChange(e.target.value);
+          }
+        }}
         onBlur={() => validateField(name)}
         min={min}
         max={max}
         className="bg-transparent w-full [&::-webkit-inner-spin-button]:appearance-none"
       />
-      <ImageWrapper imageUrl="/INFO.png" alt="info icon" className="w-[2em]" />
+      {hoverImageUrl && (
+        <Tooltip text="Informe o número indicado" imageSrc={hoverImageUrl}>
+          <ImageWrapper
+            imageUrl="/INFO.png"
+            alt="info icon"
+            className="w-[2em]"
+          />
+        </Tooltip>
+      )}
     </div>
   );
 };
