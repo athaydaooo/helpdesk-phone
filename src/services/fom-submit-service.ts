@@ -1,4 +1,4 @@
-import { FormContent } from "@/components/organisms/phone-form";
+import { PhoneFormData } from "@/types/domain/phone-form";
 import config from "@/utils/config";
 import logger from "@/utils/logger";
 import MdeamonClient from "@/utils/mdeamon-client";
@@ -16,7 +16,7 @@ class FormSubmitService {
     );
   }
 
-  async submitPhone(formContent: FormContent): Promise<void> {
+  async submitPhone(formContent: PhoneFormData): Promise<void> {
     try {
       const emailTemplate = getEmailTemplate(formContent);
       await this.mdeamonClient.sendMail(
