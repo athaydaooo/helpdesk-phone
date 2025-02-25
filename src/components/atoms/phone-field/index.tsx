@@ -3,16 +3,21 @@
 import * as React from "react";
 import { ImageWrapper } from "../image-wrapper";
 import clsx from "clsx";
+import { FieldNames } from "@/components/organisms/phone-form";
 
 interface PhoneFieldProps {
+  name: FieldNames;
   value: string;
   onChange: (value: string) => void;
+  validateField: (field: FieldNames) => void;
   className?: string;
 }
 
 export const PhoneField: React.FC<PhoneFieldProps> = ({
+  name,
   value,
   onChange,
+  validateField,
   className,
 }) => {
   const formatPhoneNumber = (input: string): string => {
@@ -46,6 +51,7 @@ export const PhoneField: React.FC<PhoneFieldProps> = ({
           placeholder="Whatsapp com DDD"
           value={value}
           onChange={handleChange}
+          onBlur={() => validateField(name)}
           className="bg-transparent text-xs md:text-base  outline-none"
         />
       </div>
