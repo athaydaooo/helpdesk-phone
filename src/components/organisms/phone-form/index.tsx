@@ -135,7 +135,7 @@ export const PhoneForm: React.FC = () => {
 
         <FormHeader />
 
-        <section className="p-4 mt-5 w-full text-[#807B7C] rounded-xl">
+        <section className="p-4 mt-5 w-full text-placeholder rounded-xl">
           <InputField
             name={FieldNames.name}
             placeholder="Digite seu primeiro nome"

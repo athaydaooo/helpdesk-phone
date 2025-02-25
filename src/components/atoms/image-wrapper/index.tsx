@@ -6,7 +6,7 @@ interface ImageWrapperProps {
   imageUrl: string;
   alt?: string;
   className?: string;
-  priority?: boolean; // Adiciona suporte para otimização de LCP
+  priority?: boolean;
 }
 
 export const ImageWrapper: React.FC<ImageWrapperProps> = ({
