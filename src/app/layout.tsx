@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./style.css";
 
-const popins = Poppins({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
+const poppins = Poppins({
+  weight: ["500"],
+  style: ["normal"],
   subsets: ["latin"],
   variable: "--font-poppins",
 });
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`!${popins.variable} antialiased bg-white`}>
+      <body className={`${poppins.className} antialiased bg-white`}>
         {children}
       </body>
     </html>
