@@ -1,6 +1,6 @@
 repositoryName: helpdesk-phone
 repositoryOwner: commexcom
-imageTag: cd5ecc7ed60778350aa69c92154045c19140cba6
+imageTag: b04cd75425e5426c8a24e0698db5b36e1523af6b
 replicaCount: 2
 service:
   enabled: true
