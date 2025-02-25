@@ -1,4 +1,4 @@
-import { FormContent } from "@/components/organisms/form";
+import { FormContent } from "@/components/organisms/phone-form";
 import config from "@/utils/config";
 import logger from "@/utils/logger";
 import MdeamonClient from "@/utils/mdeamon-client";
