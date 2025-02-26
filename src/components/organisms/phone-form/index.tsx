@@ -160,7 +160,7 @@ export const PhoneForm: React.FC = () => {
               <InputNumberField
                 name={FieldNames.ramal}
                 validateField={validateField}
-                placeholder="Ramal"
+                placeholder="Ramal DDR"
                 value={ramal}
                 onChange={setRamal}
                 className={clsx(
@@ -192,7 +192,7 @@ export const PhoneForm: React.FC = () => {
               validateField={validateField}
               value={description}
               onChange={setDescription}
-              placeholder="Oque você precisa?"
+              placeholder="Informe oque está acontecendo..."
               className={getInvalidFieldClass(
                 invalidFields,
                 FieldNames.description
