@@ -124,7 +124,7 @@ export const PhoneForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-center font-semibold rounded-2xl shadow-xl max-w-[350px] md:max-w-[60em] text-blue-guaruja bg-white my-20 px-6 py-11 w-fit h-fit">
+    <div className="flex flex-col md:grid md:grid-cols-2 justify-start items-center font-semibold rounded-2xl shadow-xl max-w-[400px] md:max-w-[60em] text-blue-guaruja bg-white my-10 mx-6 px-6 py-11 w-fit h-fit overflow-y-auto">
       <div className="flex flex-col w-fit">
         <ImageWrapper
           className="block md:hidden w-[50%] mb-6"
