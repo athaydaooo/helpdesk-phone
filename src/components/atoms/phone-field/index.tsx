@@ -41,20 +41,19 @@ export const PhoneField: React.FC<PhoneFieldProps> = ({
     <div
       className={clsx(
         className,
-        "flex justify-between p-2.5 text-center rounded-2xl bg-slate-100 w-full"
+        "flex flex-row overflow-hidden p-2.5 w-full text-xs md:text-base text-left rounded-xl bg-slate-100"
       )}
     >
-      <div className="flex gap-1.5 items-center h-full ">
-        <span className="self-stretch my-auto text-xs md:text-base">+55</span>
-        <input
-          type="tel"
-          placeholder="Whatsapp com DDD"
-          value={value}
-          onChange={handleChange}
-          onBlur={() => validateField(name)}
-          className="bg-transparent text-xs md:text-base  outline-none"
-        />
-      </div>
+      <span className="self-stretch mr-2 text-xs md:text-base">+55</span>
+
+      <input
+        type="tel"
+        placeholder="Whatsapp com DDD"
+        value={value}
+        onChange={handleChange}
+        onBlur={() => validateField(name)}
+        className="bg-transparent w-full"
+      />
       <ImageWrapper
         imageUrl="/WPP-GRAY.png"
         alt="Logo whatsapp cinza"
