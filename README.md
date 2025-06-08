@@ -1,74 +1,90 @@
-# Base Repository NextJS
+# Plataforma de Suporte Técnico para Telefonia
 
-Este repositório serve como base para projetos Next.js, ideal para quem deseja criar novos projetos rapidamente com uma configuração inicial padrão.
+Uma plataforma interna de suporte técnico voltada para atendimento de telefonia, permitindo que usuários acessem um formulário de suporte via QR Code e a equipe técnica gerencie os chamados de forma eficiente.
+
+## 📋 Descrição
+
+O sistema oferece:
+- Acesso rápido a formulários de suporte via QR Code diretamente no telefone
+- Registro automatizado de chamados técnicos
+- Painel de acompanhamento para a equipe técnica responder rapidamente
 
 ## 🚀 Começando
 
-Este projeto foi criado com o objetivo de fornecer uma estrutura inicial para outros projetos. Ele contém uma configuração básica de um aplicativo Next.js, pronto para ser utilizado como base para outras aplicações.
-
 ### Requisitos
 
-- **Node.js**: A versão recomendada do Node.js é a 16 ou superior.
-- **pnpm**: Usamos o `pnpm` como gerenciador de pacotes para garantir uma instalação mais rápida e eficiente. **Recomendamos fortemente o uso do `pnpm`**.
+- **Node.js**: Versão 16 ou superior
+- **pnpm**: Gerenciador de pacotes recomendado
 
 ### Instalação
 
 1. Clone o repositório:
-
    ```bash
-   git clone https://github.com/seu-usuario/base-repository.git
-   cd base-repository
+   git clone https://github.com/athaydaooo/helpdesk-phone.git
+   cd helpdesk-phone
    ```
 
-2. Instale as dependências com o `pnpm`:
-
+2. Instale as dependências:
    ```bash
    pnpm install
    ```
 
-### Scripts
+3. Configure as variáveis de ambiente:
+   - Crie um arquivo `.env` baseado no `.env.example`
+   - Configure as variáveis para email (Nodemailer) e outros serviços
 
-- **Desenvolvimento**: Inicie o servidor de desenvolvimento com o TurboPack para maior performance:
+### Scripts Principais
 
+- **Desenvolvimento**:
   ```bash
   pnpm dev
   ```
 
-- **Construção**: Gere os arquivos de produção:
-
+- **Produção**:
   ```bash
   pnpm build
-  ```
-
-- **Iniciar**: Inicie o aplicativo em modo de produção:
-
-  ```bash
   pnpm start
   ```
 
-- **Lint**: Verifique o código com o ESLint:
-
+- **Lint e Formatação**:
   ```bash
   pnpm lint
+  pnpm format
   ```
 
-## 🔧 Dependências
+## 🛠️ Dependências Principais
 
-- **React**: `^19.0.0`
-- **React-DOM**: `^19.0.0`
-- **Next.js**: `15.1.6`
-- **TypeScript**: `^5`
-- **Tailwind CSS**: `^3.4.1`
-- **ESLint**: `^9`
+### Dependências de Produção
+- Next.js 15.1.6
+- React 19
+- Nodemailer 6.10.0 (para notificações por email)
+- Winston 3.17.0 (para logging)
+- Tailwind CSS 3.4.1 (para estilização)
 
-## 🚧 O que está por vir?
+### Dependências de Desenvolvimento
+- TypeScript 5
+- ESLint 9
+- Jest (para testes)
+- Testing Library (para testes de componentes)
 
-Atualmente, este repositório contém apenas a configuração básica para começar a usar o Next.js com o Tailwind CSS e TypeScript. No futuro, mais recursos serão adicionados, como configurações de integração contínua, testes automatizados, e muito mais!
+## 🔧 Funcionalidades Implementadas
+- Formulário de suporte acessível via QR Code
+- Sistema de registro e acompanhamento de chamados
+- Integração com serviço de email (Nodemailer)
+- Logging de atividades (Winston)
 
-## Contribuindo
+## 📈 Próximos Passos
+- [ ] Implementar autenticação de usuários
+- [ ] Adicionar dashboard de métricas
+- [ ] Integração com sistemas de telefonia
+- [ ] Notificações em tempo real
 
-Sinta-se à vontade para fazer um fork deste repositório e adicionar melhorias ou novos recursos. Se você encontrar problemas ou tiver sugestões, por favor, abra uma issue.
+## 🤝 Como Contribuir
+1. Faça um fork do projeto
+2. Crie sua branch (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
 
-## Licença
-
-Este projeto é licenciado sob a [MIT License](LICENSE).
+## 📄 Licença
+Este projeto está licenciado sob a [MIT License](LICENSE).
